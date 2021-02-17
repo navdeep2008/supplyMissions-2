@@ -71,12 +71,25 @@ function draw() {
   rectMode(CENTER);
   background(0);
  
-  packageSprite.x= packageBody.position.x 
-  packageSprite.y= packageBody.position.y 
-
+  packageSprite.x= packageBody.position.x;
+  packageSprite.y= packageBody.position.y;
+  
+  function keyPressed() {
+	if (keyCode === DOWN_ARROW) {
+   Matter.Body.setStatic(packageBody,false);
+   }
+   
+   if (keyCode === RIGHT_ARROW) {
+	   helicopterSprite.x = helicopterSprite.x+2;
+	   var translation = {x:20,y:0}
+	   Matter.Body.translate(packageBody, translation);  
+   }
+   
+   if (keyCode === LEFT_ARROW) {
+	   helicopterSprite.x = helicopterSprite.x-2;
+	   var translation = {x:-20,y:0}
+	   Matter.Body.translate(packageBody, translation)
+   }
   
   drawSprites();
-  
-  
- 
-}
+}}
