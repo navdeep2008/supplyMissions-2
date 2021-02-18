@@ -34,14 +34,11 @@ function setup() {
 	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.4, isStatic:true});
 	World.add(world, packageBody);
 	
-
-	//Create a Ground
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
  	World.add(world, ground);
 
  	boxPosition=width/2-100
  	boxY=610;
-
 
  	boxleftSprite=createSprite(boxPosition, boxY, 20,100);
  	boxleftSprite.shapeColor=color(255,0,0);
@@ -61,11 +58,8 @@ function setup() {
  	boxRightBody = Bodies.rectangle(boxPosition+200-20 , boxY, 20,100 , {isStatic:true} );
  	World.add(world, boxRightBody);
 
-
-	Engine.run(engine);
-  
+	Engine.run(engine); 
 }
-
 
 function draw() {
   rectMode(CENTER);
@@ -73,8 +67,11 @@ function draw() {
  
   packageSprite.x= packageBody.position.x;
   packageSprite.y= packageBody.position.y;
-  
-  function keyPressed() {
+
+  drawSprites();
+}
+
+function keyPressed() {
 	if (keyCode === DOWN_ARROW) {
    Matter.Body.setStatic(packageBody,false);
    }
@@ -89,7 +86,5 @@ function draw() {
 	   helicopterSprite.x = helicopterSprite.x-2;
 	   var translation = {x:-20,y:0}
 	   Matter.Body.translate(packageBody, translation)
-   }
+   }}
   
-  drawSprites();
-}}
